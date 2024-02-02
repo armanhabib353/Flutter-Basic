@@ -1,4 +1,5 @@
 import 'package:asha_new_projects/shared/style_text.dart';
+import 'package:asha_new_projects/shared/styled_button.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +10,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List characters = [
+    'mario',
+    'luigi',
+    'peach',
+    'toad',
+    'bowser',
+    'koopa',
+    'mario',
+    'luigi',
+    'peach',
+    'toad',
+    'bowser',
+    'koopa'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,18 +36,29 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const Text('Character List'),
-            const StyledTitle('Character List'),
-            const StyledText('Arman Habib'),
-            const StyledHeading('Arman Habib'),
-            Text(
-              'Character List',
-              style: Theme.of(context).textTheme.titleMedium,
+            // List View
+            Expanded(
+              child: ListView.builder(
+                  itemCount: characters.length,
+                  itemBuilder: (_, index) {
+                    return Container(
+                      color: Colors.grey,
+                      padding: const EdgeInsets.all(40),
+                      margin: const EdgeInsets.only(bottom: 40),
+                      child: Text(characters[index]),
+                    );
+                  }),
             ),
-            const Expanded(child: SizedBox()),
-            FilledButton(
+            // const Text('Character List'),
+            // const StyledTitle('Character List'),
+            // const StyledText('Arman Habib'),
+            // const StyledHeading('Arman Habib'),
+            // const Expanded(child: SizedBox()),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red, foregroundColor: Colors.blue),
               onPressed: () {},
-              child: const Text('Create New'),
+              child: const StyledHeading('Create New'),
             )
           ],
         ),
